@@ -1,8 +1,9 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using UniversityRegistrar.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace UniversityRegistrar.Controllers
 {
@@ -26,12 +27,20 @@ namespace UniversityRegistrar.Controllers
       return View();
     }
 
+
     [HttpPost]
     public ActionResult Create(Course course)
     {
-      _db.Courses.Add(course);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      if (!ModelState.IsValid)
+      {
+        return View(course);
+      }
+      else
+      {
+        _db.Courses.Add(course);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Edit(int id)

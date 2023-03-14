@@ -12,5 +12,6 @@ namespace UniversityRegistrar.Models
     public int CourseId { get; set; }
     public Course Course { get; set; }
     public List<StudentTag> JoinEntities { get;}
+    public List<CourseStudent> JoinEntities2 { get; }
   }
 }

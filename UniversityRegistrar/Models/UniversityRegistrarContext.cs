@@ -6,6 +6,9 @@ namespace UniversityRegistrar.Models
   {
     public DbSet<Course> Courses { get; set; }
     public DbSet<Student> Students { get; set; }
+
+    public DbSet<CourseStudent> CourseStudents { get; set; }
+
     public DbSet<Tag> Tags { get; set; }
     public DbSet<StudentTag> StudentTags { get; set; }
 

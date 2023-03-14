@@ -10,5 +10,8 @@
   @Html.LabelFor(model => model.Description)
   @Html.TextBoxFor(model => model.Description)
   <input type="submit" value="Add new course" />
+
+  <p>@Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+  <p>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 }
 <p>@Html.ActionLink("Show all courses", "Index")</p>
