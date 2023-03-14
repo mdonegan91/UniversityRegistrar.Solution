@@ -9,6 +9,8 @@
 <p><strong>NOTE:</strong> You need to have at least one course before you can add an student!</p>
 <p>Go to @Html.ActionLink("this page", "Create", "Courses") to create a course.</p>
 
+<h4>Add a new student</h4>
+
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Name)
@@ -20,3 +22,8 @@
   <input type="submit" value="Add new student"/>
 }
 <p>@Html.ActionLink("Show all students", "Index")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+<p>@Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>

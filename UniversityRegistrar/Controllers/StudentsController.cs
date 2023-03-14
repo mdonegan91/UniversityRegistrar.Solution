@@ -33,15 +33,19 @@ namespace UniversityRegistrar.Controllers
     [HttpPost]
     public ActionResult Create(Student student)
     {
-      if (student.CourseId == 0)
+      if (!ModelState.IsValid)
       {
-        return RedirectToAction("Create");
+          ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "Description");
+          return View(student);
       }
-      _db.Students.Add(student);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      else
+      {
+        _db.Students.Add(student);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
-
+    
     public ActionResult Edit(int id)
     {
       Student thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
