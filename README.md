@@ -1,61 +1,79 @@
-## What Is This?
+# _University Registrar's Office_
 
-This is an example repo corresponding to multiple lessons within the LearnHowToProgram.com walkthrough on creating a To Do List application in [Section 4: Many-to-Many Relationships](https://www.learnhowtoprogram.com/c-and-net/many-to-many-relationships).
+#### By Molly Donegan, Kai Clausen, and Eliot Gronstal
 
-This project corresponds to the classwork and lessons that describe how to connect an ASP.NET Core MVC project to a MySQL database using [Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) with migrations. This project contains a one-to-many relationship between `Item` and `Category`, and a many-to-many relationship between `Item` and `Tag`. There are multiple lessons in this series. The first lesson in the series is [Code First Development and Migrations](https://www.learnhowtoprogram.com/c-and-net-part-time/many-to-many-relationships/code-first-development-and-migrations).
+#### _An app for a University Registrar to keep track of students and courses. Made for C# Week 4 of Epicodus Coding School exploring many-to-many relationships._
 
-There are multiple branches in this repo that are described more below.
+## Technologies Used
 
-## How To Run This Project
+* _C#_
+* _.NET_
+* _HTML_
+* _MVC_
+* _SQL Workbench_
+* _Entity Framework_
+* _CSS_
 
-### Install Tools
+## Description
 
-Install the tools that are introduced in [this series of lessons on LearnHowToProgram.com](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c).
+An app for a University Registrar to keep track of students and courses.  
 
-### Set Up and Run Project
+* As a registrar, one can enter a student to keep track of all students enrolled at this University. They can provide a name and date of enrollment.
 
-1. Clone this repo.
-2. Open the terminal and navigate to this project's production directory called "ToDoList".
-3. Within the production directory "ToDoList", create a new file called `appsettings.json`.
-4. Within `appsettings.json`, put in the following code, replacing the `uid` and `pwd` values with your own username and password for MySQL. For the LearnHowToProgram.com lessons, we always assume the `uid` is `root` and the `pwd` is `epicodus`.
+* As a registrar, one can enter a course, so they can keep track of all of the courses the University offers. They can provide a course name and a course number (ex. HIST100).
 
+* As a registrar, one can assign students to a course, so that teachers know which students are in their course. A course can have many students and a student can take many courses at the same time.
+
+## Setup/Installation Requirements
+
+* _Clone this repo._
+* _Open your terminal (e.g., Terminal or GitBash) and navigate to this project's production directory called "UniversityRegistrar"._
+* _In the command line, run the command ``dotnet run`` to compile and execute the console application. Since this is a console application, you'll interact with it through text commands in your terminal._
+* _Optionally, you can run ``dotnet build`` to compile this console app without running it._
+* _This program was built using `Microsoft .NET SDK 6.0`, and may not be compatible with other versions._
+
+* _If you want to run the project in production mode with a watcher, you can use a command line flag to specify that you want to run the "production" profile. ``dotnet watch run --launch-profile "production"``_
+*  _Open the browser to [https://localhost:5001]. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate.](https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/redirecting-to-https-and-issuing-a-security-certificate)_
+
+## SQL Workbench Configuration
+* _Create an `appsetting.json` file in the "Registrar" directory of the project._
+* _Within `appsettings.json`, put in the following code, replacing the `uid` and `pwd` values with your own username and password for MySQL._ 
 ```json
 {
-  "ConnectionStrings": {
-      "DefaultConnection": "Server=localhost;Port=3306;database=to_do_list_with_many_to_many;uid=root;pwd=epicodus;"
-  }
+    "ConnectionStrings": {
+        "DefaultConnection": "Server=localhost;Port=3306;database=[PROJECT-NAME];uid=[YOUR-USERNAME-HERE];pwd=[YOUR-PASSWORD-HERE];"
+    }
 }
 ```
+* _If you'd like to push this cloned project to a public-facing repository, remember to add the appsettings.json file to your .gitignore first._
+* _Once "appsettings.json" file has been created, navigate back to SQL Workbench._ 
+* _Import the database named ``"project_name.sql"`` from the root directory of the project._ 
 
-5. Create the database using the migrations in the To Do List project. Open your shell (e.g., Terminal or GitBash) to the production directory "ToDoList", and run `dotnet ef database update`. 
-    - To optionally create a migration, run the command `dotnet ef migrations add MigrationName` where `MigrationName` is your custom name for the migration in UpperCamelCase. To learn more about migrations, visit the LHTP lesson [Code First Development and Migrations](https://www.learnhowtoprogram.com/c-and-net-part-time/many-to-many-relationships/code-first-development-and-migrations).
-6. Within the production directory "ToDoList", run `dotnet watch run` in the command line to start the project in development mode with a watcher.
-4. Open the browser to _https://localhost:5001_. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/lessons/redirecting-to-https-and-issuing-a-security-certificate).
+## Database Import Instructions
+
+* _Open SQL workbench._
+* _Navigate to the "Administration" tab in SQL Workbench._
+* _Click ``"Data Import/Restore"``_
+* _Select the radio button "Import from Self-Contained File" and include file path to the sql file of this project that has been cloned to your machine._
+* _In "Default Schema to be Imported to" click "New"._
+* _Name the schema ``"project_name"`` then click "OK"._
+* _Once named, switch to ``"Import Progress"`` tab and click ``"Start Import"``._
 
 
-## Available Branches
+## Test Instructions
 
-**1_starter_project**: This is the default branch with the starter code for the To Do List project as an ASP.NET Core MVC web application that is configured to use Entity Framework Core to communicate with a MySQL database as completed at the end of section 3. **This branch is not meant to be run using the above instructions, as it is not configured to use EF Core migrations; instead it is meant to be used as a starting point for the refactor we begin in the LHTP lesson [Code First Development and Migrations](https://www.learnhowtoprogram.com/c-and-net-part-time/many-to-many-relationships/code-first-development-and-migrations).**
+* _Using a shell program, navigate from the root directory, "UniversityRegistrar.Solution," to the "UniversityRegistrar.Tests" directory._
+* _Once in the "UniversityRegistrar.Tests" directory, type ``dotnet restore`` into the console._
+* _After the restore process is complete, type ``dotnet test`` into the console. This will run all written tests and display the test results into the console to review._
 
-**2_many_to_many_setup**: This branch includes the code we added after working through the following lessons:
+## Known Bugs
 
-- https://www.learnhowtoprogram.com/c-and-net/many-to-many-relationships/code-first-development-and-migrations
-- https://www.learnhowtoprogram.com/c-and-net/many-to-many-relationships/many-to-many-relationships-join-entities
+* _Any known issues_
 
-**3_m2m_read_and_create**: This branch includes the code we added after working through the following lessons:
+* _Please reach out with any questions or concerns_
 
-- https://www.learnhowtoprogram.com/c-and-net/many-to-many-relationships/many-to-many-read-functionality
-- https://www.learnhowtoprogram.com/c-and-net/many-to-many-relationships/many-to-many-create-functionality
+## License
 
-**4_m2m_update_and_delete**: This branch includes the code we added after working through the following lessons:
+_[MIT](https://opensource.org/license/mit/)_
 
-- https://www.learnhowtoprogram.com/c-and-net/many-to-many-relationships/many-to-many-update-functionality
-- https://www.learnhowtoprogram.com/c-and-net/many-to-many-relationships/many-to-many-delete-functionality
-
-**5_model_validation**: This branch includes the code we added after working through the following lesson:
-
-- https://www.learnhowtoprogram.com/c-and-net/many-to-many-relationships/model-validation-with-validation-attributes
-
-**6_data_from_multiple_db_tables**: This branch includes the code we added after working through the following lesson:
-
-- https://www.learnhowtoprogram.com/c-and-net/many-to-many-relationships/creating-a-splash-page-with-data-from-multiple-database-tables
+Copyright (c) _2023_ _Molly Donegan, Kai Clausen, Eliot Gronstal_
