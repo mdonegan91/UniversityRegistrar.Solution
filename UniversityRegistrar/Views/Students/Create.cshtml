@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model UniversityRegistrar.Models.Student
+
+<h4>Add a new student</h4>
+
+<p><strong>NOTE:</strong> You need to have at least one course before you can add an student!</p>
+<p>Go to @Html.ActionLink("this page", "Create", "Courses") to create a course.</p>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+
+  @Html.LabelFor(model => model.Course)
+  @Html.DropDownList("CourseId")
+
+  <input type="submit" value="Add new student"/>
+}
+<p>@Html.ActionLink("Show all students", "Index")</p>
